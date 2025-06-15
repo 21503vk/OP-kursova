@@ -1,0 +1,37 @@
+# Файл: compose.dev.yml
+# Development override за Docker Compose
+
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      target: development
+    volumes:
+      - ./backend:/app
+      - /app/__pycache__
+    environment:
+      - FLASK_ENV=development
+      - FLASK_DEBUG=1
+    command: ["python", "app.py"]
+    ports:
+      - "5000:5000"
+      - "5678:5678"  # Debugger port
+
+  db:
+    ports:
+      - "5432:5432"  # Expose за external connections
+    environment:
+      - POSTGRES_DB=appdb_dev
+    volumes:
+      - postgres_dev_data:/var/lib/postgresql/data
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./database/dev-data.sql:/docker-entrypoint-initdb.d/dev-data.sql
+
+  redis:
+    ports:
+      - "6379:6379"  # Expose за external connections
+
+volumes:
+  postgres_dev_data:
