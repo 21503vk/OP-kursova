@@ -71,8 +71,8 @@ microservices-app/
 
 1. **Клониране на проекта**
 ```bash
-git clone https://github.com/yourusername/microservices-app.git
-cd microservices-app
+git clone https://github.com/21503vk/OP-kursova.git
+cd OP-kursova
 ```
 
 2. **Създаване на необходимите директории**
@@ -100,14 +100,14 @@ docker compose logs -f
 ### Изграждане на backend образа
 ```bash
 cd backend
-docker build -t yourusername/microservices-backend:latest .
+docker build -t 21503vk/microservices-backend:latest .
 ```
 
 ### Публикуване в Docker Hub
 ```bash
-docker tag yourusername/microservices-backend:latest yourusername/microservices-backend:v1.0.0
-docker push yourusername/microservices-backend:latest
-docker push yourusername/microservices-backend:v1.0.0
+docker tag 21503vk/microservices-backend:latest 21503vk/microservices-backend:v1.0.0
+docker push 21503vk/microservices-backend:latest
+docker push 21503vk/microservices-backend:v1.0.0
 ```
 
 ## 🌐 API Endpoints
